@@ -1,0 +1,29 @@
+﻿<Window x:Class="TestSoftMarine.NoteAddEdit"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:TestSoftMarine"
+        mc:Ignorable="d"
+        Title="Добавление / редактирование замечания" Height="280" Width="400" MinWidth="400" MinHeight="280">
+    <Grid>
+        <Label Content="Замечание" HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top"/>
+        <Label Content="Комментарий" HorizontalAlignment="Left" Margin="10,150,0,0" VerticalAlignment="Top"/>
+        <Label Content="Дата исправления" HorizontalAlignment="Left" Margin="10,92,0,0" VerticalAlignment="Top"/>
+
+        <TextBox Height="23" Margin="125,39,10,0" TextWrapping="Wrap" VerticalAlignment="Top"
+            Text="{Binding Remark, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnNotifyDataErrors=True}"
+            Validation.ErrorTemplate="{DynamicResource ValidationErrorTemplate}"/>
+        <DatePicker Margin="125,94,10,0" VerticalAlignment="Top"
+            Text="{Binding FixDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnNotifyDataErrors=True}"
+            Validation.ErrorTemplate="{DynamicResource ValidationErrorTemplate}"/>
+        <TextBox Margin="125,150,10,38" TextWrapping="Wrap" AcceptsReturn="True"
+            Text="{Binding Comment, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnNotifyDataErrors=True}"
+            Validation.ErrorTemplate="{DynamicResource ValidationErrorTemplate}"/>
+        <Button Command="{Binding SaveNoteCommandAsync}" Content="Сохранить" HorizontalAlignment="Right" Margin="0,0,90,10" VerticalAlignment="Bottom" Width="75"/>
+        <Button Command="{Binding CancelCommand}" Content="Отмена" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="75"/>
+        <Label Content="Инспекция" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <TextBox IsEnabled="False" Height="23" Margin="125,10,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="{Binding TargetInspection.Name}"/>
+
+    </Grid>
+</Window>
